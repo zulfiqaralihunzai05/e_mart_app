@@ -1,7 +1,10 @@
 import 'package:e_mart_app/consts/consts.dart';
 import 'package:e_mart_app/consts/lists.dart';
+import 'package:e_mart_app/view/category_screen/categories_details.dart';
 import 'package:e_mart_app/widgets_common/bg_widget.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({Key? key}) : super(key: key);
@@ -34,7 +37,9 @@ class CategoryScreen extends StatelessWidget {
                   10.heightBox,
                   categoriesList[index].text.color(darkFontGrey).align(TextAlign.center).make()
                 ],
-              ).box.white.roundedSM.clip(Clip.antiAlias).outerShadowSm.make();
+              ).box.white.roundedSM.clip(Clip.antiAlias).outerShadowSm.make().onTap(() {
+                Get.to(() => CategoryDetails(title: categoriesList[index],));
+              });
             }),
       ),
     ));
