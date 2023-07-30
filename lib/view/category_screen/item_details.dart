@@ -94,6 +94,8 @@ class ItemDetails extends StatelessWidget {
               ),
             ),
           )),
+
+          // color selecti0on
           SizedBox(
             height: 60,
             width: double.infinity,
