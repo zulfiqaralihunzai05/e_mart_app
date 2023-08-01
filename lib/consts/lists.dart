@@ -35,3 +35,14 @@ const categoryImages = [
   imgFc9,
 ];
 
+const itemDetailsButtonsList = [
+  video,
+  reviews,
+  sellerpolicy,
+  returnpolicy,
+  supportpolicy
+];
+
+const profileButtonList = [mywallet,order, whishlish, message];
+const profileButtonIcon = [icWallet, icOrder, icOrder, icMessages];
+

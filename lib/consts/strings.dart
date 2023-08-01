@@ -16,7 +16,7 @@ const loginWith = "log in with";
 const privacyPolicy = "Privacy Policy";
 const termAndCond = "Terms and Conditions";
 const alreadyHaveAccount = "Already have an account? ";
-
+const logout = "Logout";
 const home = "Home",
     categories = "Categories",
     cart = "Cart",
@@ -48,4 +48,16 @@ const womenClothing = "Women Clothing ",
     jewelery = "Jewelery",
     cellphone = "Cell Phone",
     furniture = "Furniture";
+
+//item details Strings
+const video = "Video",
+    reviews = "Reviews",
+    sellerpolicy = "Seller Policy",
+    returnpolicy = "Return Policy",
+    supportpolicy = "Support Policy",
+    productyoumaylike = "Product you mau also like";
+
+//profile Setting
+
+const mywallet = "My Wallet", whishlish = "My Wishlist", order = "My Orders", message = "Messages";
 
