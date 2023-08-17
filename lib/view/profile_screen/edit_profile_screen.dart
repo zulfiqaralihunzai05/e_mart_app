@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:e_mart_app/consts/consts.dart';
 import 'package:e_mart_app/controllers/profile_controller.dart';
 import 'package:e_mart_app/widgets_common/bg_widget.dart';
@@ -59,10 +58,17 @@ class EditProfileScreen extends StatelessWidget {
                 hint: nameHint,
                 title: name,
                 isPass: false),
+            10.heightBox,
             customTextField(
-                controller: controller.passController,
+                controller: controller.oldpassController,
                 hint: passwordHint,
-                title: password,
+                title: oldpass,
+                isPass: true),
+            10.heightBox,
+            customTextField(
+                controller: controller.newpassController,
+                hint: passwordHint,
+                title: newpass,
                 isPass: true),
             10.heightBox,
             controller.isloading.value
@@ -75,13 +81,36 @@ class EditProfileScreen extends StatelessWidget {
                         color: redColor,
                         onPress: () async {
                           controller.isloading(true);
-                          await controller.uploadProfileImage();
-                          await controller.uploadProfile(
-                            imgUrl: controller.profileImageLink,
-                            name: controller.nameController.text,
-                            password: controller.passController.text,
-                          );
-                          VxToast.show(context, msg: "Updated");
+
+                          //if image is not selected
+                          if(controller.profileImgPath.value.isNotEmpty){
+                            await controller.uploadProfileImage();
+                          }else{
+                            controller.profileImageLink = data['imageUrl'];
+                          }
+
+                          // if old password is matched  with database
+
+                          if(data['password'] == controller.oldpassController.text){
+                            await controller.changeAuthPassword(
+                              email: data['email'],
+                              password: controller.oldpassController.text,
+                              newpassword: controller.newpassController.text
+
+                            );
+
+                            await controller.uploadProfile(
+                              imgUrl: controller.profileImageLink,
+                              name: controller.nameController.text,
+                              password: controller.newpassController.text,
+                            );
+                            VxToast.show(context, msg: "Updated");
+                          }else{
+                            VxToast.show(context, msg: "Old Password is Wrong");
+                            controller.isloading(false);
+                          }
+
+
                         },
                         textColor: whiteColor,
                         title: "Save"),
@@ -91,8 +120,8 @@ class EditProfileScreen extends StatelessWidget {
             .box
             .white
             .shadowSm
-            .padding(EdgeInsets.all(16))
-            .margin(EdgeInsets.only(top: 50, left: 12, right: 12))
+            .padding(const EdgeInsets.all(16))
+            .margin(const EdgeInsets.only(top: 50, left: 12, right: 12))
             .rounded
             .make(),
       ),

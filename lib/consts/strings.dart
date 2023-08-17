@@ -62,5 +62,5 @@ const video = "Video",
 
 //profile Setting
 
-const mywallet = "My Wallet", whishlish = "My Wishlist", order = "My Orders", message = "Messages";
+const mywallet = "My Wallet", whishlish = "My Wishlist", order = "My Orders", message = "Messages", oldpass = 'Old Password', newpass = 'New Password';
 
